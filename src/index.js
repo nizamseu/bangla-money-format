@@ -20,6 +20,8 @@ const defaultOptions = {
   template: "{currency}{amount} ({text})",
   useTraditionalScale: false,
   showEnglishEquivalent: false,
+  textInEnglish: false, // New: Convert Bengali text to English
+  useShortForm: false, // New: Use short form like 1K, 1M, 1B, 1T
 };
 
 // ---------------------------
@@ -50,6 +52,87 @@ const tens = [
   "আশি",
   "নব্বই",
 ];
+
+// ---------------------------
+// Bengali to English Translation Mappings
+// ---------------------------
+const bengaliToEnglish = {
+  // Numbers
+  শূন্য: "zero",
+  এক: "one",
+  দুই: "two",
+  তিন: "three",
+  চার: "four",
+  পাঁচ: "five",
+  ছয়: "six",
+  সাত: "seven",
+  আট: "eight",
+  নয়: "nine",
+  দশ: "ten",
+  এগারো: "eleven",
+  বারো: "twelve",
+  তেরো: "thirteen",
+  চৌদ্দ: "fourteen",
+  পনেরো: "fifteen",
+  ষোল: "sixteen",
+  সতেরো: "seventeen",
+  আঠারো: "eighteen",
+  উনিশ: "nineteen",
+  বিশ: "twenty",
+  ত্রিশ: "thirty",
+  চল্লিশ: "forty",
+  পঞ্চাশ: "fifty",
+  ষাট: "sixty",
+  সত্তর: "seventy",
+  আশি: "eighty",
+  নব্বই: "ninety",
+
+  // Units
+  শত: "hundred",
+  হাজার: "thousand",
+  লাখ: "lakh",
+  কোটি: "crore",
+
+  // Traditional units
+  অর্বুদ: "billion",
+  খর্ব: "ten billion",
+  নিল: "hundred billion",
+  পদ্ম: "trillion",
+  শঙ্খ: "ten trillion",
+  মহাশঙ্খ: "hundred trillion",
+  অন্ত্য: "quadrillion",
+  মধ্য: "ten quadrillion",
+  পরার্ধ: "hundred quadrillion",
+  অপরার্ধ: "quintillion",
+  উৎপল: "ten quintillion",
+  নিকুমুদ: "hundred quintillion",
+
+  // Currency
+  টাকা: "taka",
+  পয়সা: "paisa",
+
+  // Other
+  ঋণ: "negative",
+};
+
+// ---------------------------
+// Short Form Mappings (Bengali and English)
+// ---------------------------
+const shortFormMappings = {
+  bengali: {
+    1000: "K", // হাজার -> K (সহজ করার জন্য)
+    1000000: "M", // লাখ -> M
+    10000000: "Cr", // কোটি -> Cr
+    1000000000: "B", // অর্বুদ -> B
+    1000000000000: "T", // পদ্ম -> T
+  },
+  english: {
+    1000: "K",
+    1000000: "M",
+    1000000000: "B",
+    1000000000000: "T",
+  },
+};
 
 // ---------------------------
 // Traditional Scale: Extended English equivalents for larger numbers
@@ -231,6 +314,47 @@ function numberToBanglaTraditional(num) {
 }
 
 // ---------------------------
+// Convert Bengali text to English
+// ---------------------------
+function convertBengaliToEnglish(text) {
+  let result = text;
+
+  // Replace Bengali words with English equivalents
+  for (const [bengali, english] of Object.entries(bengaliToEnglish)) {
+    // Use word boundary approach for Bengali text
+    const regex = new RegExp(`(^|\\s)${bengali}(\\s|$)`, "g");
+    result = result.replace(regex, `$1${english}$2`);
+  }
+
+  return result;
+}
+
+// ---------------------------
+// Generate Short Form for numbers
+// ---------------------------
+function generateShortForm(num, useEnglish = false) {
+  const mappings = useEnglish
+    ? shortFormMappings.english
+    : shortFormMappings.bengali;
+
+  // Sort by value descending to check largest units first
+  const sortedUnits = Object.entries(mappings)
+    .map(([value, suffix]) => [parseInt(value), suffix])
+    .sort((a, b) => b[0] - a[0]);
+
+  for (const [unitValue, suffix] of sortedUnits) {
+    if (num >= unitValue) {
+      const value = num / unitValue;
+      // Format to remove unnecessary decimals
+      const formatted = value % 1 === 0 ? value.toString() : value.toFixed(1);
+      return formatted + suffix;
+    }
+  }
+
+  return num.toString();
+}
+
+// ---------------------------
 // Add English equivalent, toBanglaMoney, toText, abbreviateNumber
 // (Only minor changes for BigInt compatibility in toText/toBanglaMoney)
 // ---------------------------
@@ -294,12 +418,47 @@ function toText(num, options = {}) {
 
   if (typeof number !== "number" || isNaN(number)) return "";
 
-  if (number === 0) return opt.showTakaWord ? "শূন্য টাকা" : "শূন্য";
+  if (number === 0)
+    return opt.showTakaWord
+      ? opt.textInEnglish
+        ? "zero taka"
+        : "শূন্য টাকা"
+      : opt.textInEnglish
+      ? "zero"
+      : "শূন্য";
+
+  // Handle short form if requested
+  if (opt.useShortForm) {
+    const shortForm = generateShortForm(Math.abs(number), opt.textInEnglish);
+    let result = shortForm;
+
+    if (number < 0) {
+      result = (opt.textInEnglish ? "negative " : "ঋণ ") + result;
+    }
+
+    if (opt.showTakaWord) {
+      result += opt.textInEnglish ? " taka" : " টাকা";
+    }
+
+    if (opt.template && opt.showCurrency) {
+      const amountFormatted = toBanglaMoney(number, {
+        ...opt,
+        showCurrency: false,
+      });
+      result = opt.template
+        .replace("{currency}", opt.showCurrency ? opt.currency : "")
+        .replace("{amount}", amountFormatted)
+        .replace("{text}", result);
+    }
+
+    return result;
+  }
 
   let prefixText = "";
   if (number < 0) {
     number = Math.abs(number);
-    if (opt.negativeFormat === "word") prefixText = "ঋণ ";
+    if (opt.negativeFormat === "word")
+      prefixText = opt.textInEnglish ? "negative " : "ঋণ ";
   }
 
   // Use BigInt for integer part if number is huge
@@ -321,14 +480,27 @@ function toText(num, options = {}) {
     integerText = addEnglishEquivalent(integerText);
   }
 
-  if (opt.showTakaWord) integerText += " টাকা";
+  // Convert to English if requested
+  if (opt.textInEnglish) {
+    integerText = convertBengaliToEnglish(integerText);
+  }
+
+  if (opt.showTakaWord) integerText += opt.textInEnglish ? " taka" : " টাকা";
 
   let fractionText = "";
   if (opt.showFraction && fractionPart > 0) {
     const fractionWords = opt.useTraditionalScale
       ? numberToBanglaTraditional(fractionPart)
       : numberToBanglaModern(fractionPart);
-    fractionText = fractionWords + " " + opt.fractionUnit;
+
+    let fractionUnit = opt.fractionUnit;
+    if (opt.textInEnglish) {
+      fractionUnit = convertBengaliToEnglish(fractionUnit);
+      fractionText =
+        convertBengaliToEnglish(fractionWords) + " " + fractionUnit;
+    } else {
+      fractionText = fractionWords + " " + fractionUnit;
+    }
   }
 
   let fullText = [prefixText, integerText, fractionText]

@@ -14,6 +14,37 @@ console.log(
   })
 );
 
+console.log("\n=== NEW: Bengali to English Text ===");
+console.log(
+  toText(152007845125478970000, {
+    useTraditionalScale: true,
+    textInEnglish: true,
+  })
+);
+
+console.log("\n=== NEW: Short Form Examples ===");
+console.log("1,500 (Bengali Short):", toText(1500, { useShortForm: true }));
+console.log(
+  "1,500 (English Short):",
+  toText(1500, { useShortForm: true, textInEnglish: true })
+);
+console.log(
+  "1,500,000 (Bengali Short):",
+  toText(1500000, { useShortForm: true })
+);
+console.log(
+  "1,500,000 (English Short):",
+  toText(1500000, { useShortForm: true, textInEnglish: true })
+);
+console.log(
+  "1,500,000,000 (Bengali Short):",
+  toText(1500000000, { useShortForm: true })
+);
+console.log(
+  "1,500,000,000 (English Short):",
+  toText(1500000000, { useShortForm: true, textInEnglish: true })
+);
+
 console.log("\n=== Traditional Scale (Small Numbers) ===");
 console.log("10,000,000 (১ কোটি):");
 console.log(toText(10000000, { useTraditionalScale: true }));
@@ -26,6 +57,10 @@ console.log(
 console.log("\n1,000,000,000 (১০ অর্বুদ):");
 console.log(
   toText(1000000000, { useTraditionalScale: true, showEnglishEquivalent: true })
+);
+console.log(
+  "Same in English:",
+  toText(1000000000, { useTraditionalScale: true, textInEnglish: true })
 );
 
 console.log("\n10,000,000,000 (১ খর্ব):");
