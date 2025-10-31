@@ -1,0 +1,53 @@
+const { toBanglaMoney, toText } = require("./src/index");
+
+console.log("=== Modern Scale (Default) ===");
+console.log(toText(152007845125478970000));
+
+console.log("\n=== Traditional Scale ===");
+console.log(toText(152007845125478970000, { useTraditionalScale: true }));
+
+console.log("\n=== Traditional Scale with English Equivalent ===");
+console.log(
+  toText(152007845125478970000, {
+    useTraditionalScale: true,
+    showEnglishEquivalent: true,
+  })
+);
+
+console.log("\n=== Traditional Scale (Small Numbers) ===");
+console.log("10,000,000 (১ কোটি):");
+console.log(toText(10000000, { useTraditionalScale: true }));
+
+console.log("\n100,000,000 (১ অর্বুদ):");
+console.log(
+  toText(100000000, { useTraditionalScale: true, showEnglishEquivalent: true })
+);
+
+console.log("\n1,000,000,000 (১০ অর্বুদ):");
+console.log(
+  toText(1000000000, { useTraditionalScale: true, showEnglishEquivalent: true })
+);
+
+console.log("\n10,000,000,000 (১ খর্ব):");
+console.log(
+  toText(10000000000, {
+    useTraditionalScale: true,
+    showEnglishEquivalent: true,
+  })
+);
+
+console.log("\n100,000,000,000 (১ মহাপদ্ম):");
+console.log(
+  toText(100000000000, {
+    useTraditionalScale: true,
+    showEnglishEquivalent: true,
+  })
+);
+
+console.log("\n1,000,000,000,000 (১ নিখর্ব):");
+console.log(
+  toText(1000000000000, {
+    useTraditionalScale: true,
+    showEnglishEquivalent: true,
+  })
+);
