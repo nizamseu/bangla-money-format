@@ -1,5 +1,12 @@
 const { toBanglaMoney, toText } = require("./src/index");
-console.log(toText(1500.75));
+console.log(toText(75.87));
+console.log(toText(15));
+console.log(toText(1111));
+console.log(toText(755));
+console.log(toText(55));
+console.log(toText(555));
+console.log(toText(999));
+console.log(toText(9999.54));
 console.log("=== Modern Scale (Default) ===");
 console.log(toText(152007845125478970000));
 

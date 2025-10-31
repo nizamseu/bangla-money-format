@@ -7,7 +7,7 @@ A comprehensive Bengali/Bangla money and number formatting library that supports
 
 ## ✨ Features
 
-- 🔢 **Bengali Number Formatting**: Convert numbers to Bengali text with proper grammar
+- 🔢 **Accurate Bengali Number Formatting**: Convert numbers to Bengali text with proper compound number grammar (পঁচাত্তর, পঞ্চান্ন, নিরানব্বই)
 - 💰 **Money Formatting**: Format currency with Bengali digits and text
 - 🏛️ **Traditional Scale Support**: Use traditional Bengali number scales (অর্বুদ, খর্ব, নিল, পদ্ম, etc.)
 - 🌍 **English Conversion**: Convert Bengali text to English equivalents
@@ -15,6 +15,7 @@ A comprehensive Bengali/Bangla money and number formatting library that supports
 - 🔄 **Dual Language**: Support for both Bengali and English output
 - 💡 **Highly Configurable**: Extensive options for customization
 - 📏 **Large Numbers**: Support for numbers up to 10^20
+- ✅ **Linguistically Accurate**: Proper Bengali compound numbers (21-99) with correct traditional forms
 
 ## 📦 Installation
 
@@ -30,6 +31,13 @@ const { toText, toBanglaMoney } = require("bangla-money-format");
 // Basic usage
 console.log(toText(1000000));
 // Output: ৳১০,০০০০০ (দশ লাখ টাকা)
+
+// Bengali compound numbers (accurate)
+console.log(toText(75));
+// Output: ৳৭৫ (পঁচাত্তর টাকা)
+
+console.log(toText(555));
+// Output: ৳৫৫৫ (পাঁচ শত পঞ্চান্ন টাকা)
 
 // English output
 console.log(toText(1000000, { textInEnglish: true }));
@@ -79,6 +87,16 @@ Formats a number as Bengali currency without text conversion.
 ```javascript
 const { toText } = require("bangla-money-format");
 
+// Compound numbers (accurate Bengali)
+console.log(toText(75));
+// ৳৭৫ (পঁচাত্তর টাকা)
+
+console.log(toText(55));
+// ৳৫৫ (পঞ্চান্ন টাকা)
+
+console.log(toText(99));
+// ৳৯৯ (নিরানব্বই টাকা)
+
 // Small numbers
 console.log(toText(1500));
 // ৳১৫০০ (এক হাজার পাঁচ শত টাকা)
@@ -89,6 +107,26 @@ console.log(toText(1000000));
 
 console.log(toText(10000000));
 // ৳১,০০০০০০০ (এক কোটি টাকা)
+```
+
+### 🎯 Accurate Bengali Compound Numbers
+
+Version 1.1.0 introduces accurate representation of Bengali compound numbers (21-99):
+
+```javascript
+// Correct Bengali compound forms
+console.log(toText(75));
+// ৳৭৫ (পঁচাত্তর টাকা) ✅ Correct
+
+console.log(toText(555));
+// ৳৫৫৅ (পাঁচ শত পঞ্চান্ন টাকা) ✅ Correct
+
+console.log(toText(99));
+// ৳৯৯ (নিরানব্বই টাকা) ✅ Correct
+
+// Previously showed incorrect forms like:
+// "সত্তর পাঁচ টাকা" ❌ (now fixed)
+// "পঞ্চাশ পাঁচ টাকা" ❌ (now fixed)
 ```
 
 ### Traditional vs Modern Scale

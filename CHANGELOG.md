@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-10-31
+
+### Fixed
+
+- **Bengali Compound Numbers**: Fixed incorrect representation of Bengali compound numbers (21-99)
+  - Numbers like 75, 55, 99 now show correct forms: "পঁচাত্তর", "পঞ্চান্ন", "নিরানব্বই"
+  - Previously showed incorrect concatenation: "সত্তর পাঁচ", "পঞ্চাশ পাঁচ", "নব্বই নয়"
+- Added comprehensive `specialNumbers` mapping for all Bengali compound numbers
+- Updated `convertBelowHundred()` function to prioritize special number forms
+
+### Added
+
+- Complete mapping of Bengali compound numbers (একুশ, বাইশ, তেইশ... নিরানব্বই)
+- Linguistically accurate Bengali number representation
+- Improved grammatical correctness for traditional Bengali number system
+
 ## [1.0.0] - 2025-10-31
 
 ### Added

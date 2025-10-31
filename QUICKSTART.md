@@ -13,9 +13,15 @@ npm install bangla-money-format
 ```javascript
 const { toText, toBanglaMoney } = require("bangla-money-format");
 
-// Convert number to Bengali text
+// Convert number to Bengali text (with accurate compound numbers)
 console.log(toText(1000000));
 // Output: ৳১০,০০০০০ (দশ লাখ টাকা)
+
+console.log(toText(75));
+// Output: ৳৭৫ (পঁচাত্তর টাকা)
+
+console.log(toText(555));
+// Output: ৳৫৫৫ (পাঁচ শত পঞ্চান্ন টাকা)
 
 // Format as currency only
 console.log(toBanglaMoney(1000000));
@@ -30,6 +36,13 @@ console.log(toBanglaMoney(1000000));
 const price = 25000;
 console.log(toText(price));
 // ৳২৫০০০ (বিশ পাঁচ হাজার টাকা)
+
+// Accurate compound numbers
+console.log(toText(75));
+// ৳৭৫ (পঁচাত্তর টাকা)
+
+console.log(toText(99));
+// ৳৯৯ (নিরানব্বই টাকা)
 ```
 
 ### 2. Banking Applications

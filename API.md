@@ -4,7 +4,7 @@
 
 ### `toText(number, options)`
 
-Converts a number to Bengali text representation with money formatting.
+Converts a number to Bengali text representation with money formatting using accurate Bengali compound numbers.
 
 **Parameters:**
 
@@ -18,6 +18,12 @@ Converts a number to Bengali text representation with money formatting.
 ```javascript
 toText(1000000);
 // Returns: "৳১০,০০০০০ (দশ লাখ টাকা)"
+
+toText(75);
+// Returns: "৳৭৫ (পঁচাত্তর টাকা)"
+
+toText(555);
+// Returns: "৳৫৫৫ (পাঁচ শত পঞ্চান্ন টাকা)"
 ```
 
 ### `toBanglaMoney(number, options)`
@@ -167,6 +173,22 @@ The library handles various edge cases:
 - **Very large numbers**: Uses BigInt for precision
 - **Zero values**: Returns appropriate zero representation
 - **Negative numbers**: Handles based on negativeFormat option
+
+## Bengali Number Accuracy
+
+The library includes accurate representation of Bengali compound numbers (21-99):
+
+### Compound Numbers Examples
+
+| Number | Bengali Form | Traditional Form |
+| ------ | ------------ | ---------------- |
+| 21     | একুশ         | ✅ Correct       |
+| 25     | পঁচিশ        | ✅ Correct       |
+| 55     | পঞ্চান্ন     | ✅ Correct       |
+| 75     | পঁচাত্তর     | ✅ Correct       |
+| 99     | নিরানব্বই    | ✅ Correct       |
+
+**Note**: The library correctly handles Bengali compound numbers instead of using simple concatenation (e.g., "পঁচাত্তর" not "সত্তর পাঁচ").
 
 ## Performance Notes
 
