@@ -1,54 +1,122 @@
-# 🇧🇩 Bangla Money Format
+# 🇧🇩 Bangla Money Format | বাংলা টাকা ফরম্যাট
 
 [![npm version](https://badge.fury.io/js/bangla-money-format.svg)](https://badge.fury.io/js/bangla-money-format)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://img.shields.io/npm/dm/bangla-money-format.svg)](https://www.npmjs.com/package/bangla-money-format)
+[![GitHub stars](https://img.shields.io/github/stars/nizamseu/bangla-money-format.svg)](https://github.com/nizamseu/bangla-money-format)
 
-A comprehensive Bengali/Bangla money and number formatting library that supports traditional Bengali number scales, English text conversion, and modern short forms. Perfect for financial applications, e-commerce platforms, and any application dealing with Bengali number formatting.
+**বাংলা টাকা ও সংখ্যা ফরম্যাটিং লাইব্রেরি** | **Complete Bengali/Bangla Money & Number Formatting Library**
 
-## ✨ Features
+A comprehensive **Bengali/Bangla money and number formatting library** that supports **traditional Bengali number scales**, **English text conversion**, and **modern short forms**. Perfect for **financial applications**, **e-commerce platforms**, **banking systems**, **invoicing**, **accounting software**, and any application dealing with **Bengali number formatting** in **Bangladesh** and **West Bengal**.
 
-- 🔢 **Accurate Bengali Number Formatting**: Convert numbers to Bengali text with proper compound number grammar (পঁচাত্তর, পঞ্চান্ন, নিরানব্বই)
-- 💰 **Money Formatting**: Format currency with Bengali digits and text
-- 🏛️ **Improved Traditional Scale Support**: Enhanced traditional Bengali number scales with proper terms (একশত কোটি, এক হাজার কোটি, এক লক্ষ কোটি)
-- 🌍 **English Conversion**: Convert Bengali text to English equivalents
-- ⚡ **Short Forms**: Modern K, M, B, T notation support
-- 🔄 **Dual Language**: Support for both Bengali and English output
-- 💡 **Highly Configurable**: Extensive options for customization
-- 📏 **Large Numbers**: Support for numbers up to 10^20
-- ✅ **Linguistically Accurate**: Proper Bengali compound numbers (21-99) with correct traditional forms
+**বাংলাদেশ ও পশ্চিমবঙ্গের জন্য সম্পূর্ণ টাকা ও সংখ্যা ফরম্যাটিং সমাধান।**
 
-## 📦 Installation
+## 🏷️ Keywords | কীওয়ার্ড
+
+**বাংলা:** টাকা ফরম্যাট, সংখ্যা রূপান্তর, বাংলা সংখ্যা, বাংলাদেশী টাকা, কোটি, লাখ, হাজার, অর্বুদ, খর্ব, নিল, পদ্ম  
+**English:** bangla money format, bengali number conversion, bangladesh taka, bengali currency, crore, lakh, thousand, traditional scales
+
+## ✨ Features | বৈশিষ্ট্য
+
+- 🔢 **Accurate Bengali Number Formatting | নির্ভুল বাংলা সংখ্যা ফরম্যাটিং**: Convert numbers to Bengali text with proper compound number grammar (পঁচাত্তর, পঞ্চান্ন, নিরানব্বই)
+- 💰 **Money Formatting | টাকা ফরম্যাটিং**: Format currency with Bengali digits and text (বাংলা অঙ্ক ও লেখা সহ টাকার ফরম্যাট)
+- 🏛️ **Improved Traditional Scale Support | উন্নত ঐতিহ্যবাহী স্কেল সাপোর্ট**: Enhanced traditional Bengali number scales with proper terms (একশত কোটি, এক হাজার কোটি, এক লক্ষ কোটি)
+- 🌍 **English Conversion | ইংরেজি রূপান্তর**: Convert Bengali text to English equivalents
+- ⚡ **Short Forms | সংক্ষিপ্ত ফর্ম**: Modern K, M, B, T notation support
+- 🔄 **Dual Language | দ্বিভাষিক**: Support for both Bengali and English output
+- 💡 **Highly Configurable | অত্যন্ত কাস্টমাইজেবল**: Extensive options for customization
+- 📏 **Large Numbers | বড় সংখ্যা**: Support for numbers up to 10^20
+- ✅ **Linguistically Accurate | ভাষাগতভাবে নির্ভুল**: Proper Bengali compound numbers (21-99) with correct traditional forms
+
+## 📦 Installation | ইনস্টলেশন
 
 ```bash
 npm install bangla-money-format
 ```
 
-## 🚀 Quick Start
+```bash
+yarn add bangla-money-format
+```
+
+```bash
+pnpm add bangla-money-format
+```
+
+## 🚀 Quick Start | দ্রুত শুরু
+
+### Using CommonJS (require) | CommonJS ব্যবহার করে
 
 ```javascript
 const { toText, toBanglaMoney } = require("bangla-money-format");
 
-// Basic usage
+// Basic usage | মৌলিক ব্যবহার
 console.log(toText(1000000));
 // Output: ৳১০,০০০০০ (দশ লাখ টাকা)
+```
 
-// Bengali compound numbers (accurate)
+### Using ES6 Modules (import) | ES6 মডিউল ব্যবহার করে
+
+```javascript
+import { toText, toBanglaMoney } from "bangla-money-format";
+
+// Basic usage | মৌলিক ব্যবহার
+console.log(toText(1000000));
+// Output: ৳১০,০০০০০ (দশ লাখ টাকা)
+```
+
+### Examples | উদাহরণ
+
+```javascript
+// Bengali compound numbers (accurate) | নির্ভুল বাংলা যৌগিক সংখ্যা
 console.log(toText(75));
 // Output: ৳৭৫ (পঁচাত্তর টাকা)
 
 console.log(toText(555));
 // Output: ৳৫৫৫ (পাঁচ শত পঞ্চান্ন টাকা)
 
-// English output
+// English output | ইংরেজি আউটপুট
 console.log(toText(1000000, { textInEnglish: true }));
 // Output: ৳১০,০০০০০ (ten lakh taka)
 
-// Short form
+// Short form | সংক্ষিপ্ত ফর্ম
 console.log(toText(1500000, { useShortForm: true }));
 // Output: ৳১৫,০০০০০ (1.5M টাকা)
+
+// Traditional scale | ঐতিহ্যবাহী স্কেল
+console.log(toText(1000000000, { useTraditionalScale: true }));
+// Output: ৳১,০০০০০০০০০ (একশত কোটি টাকা)
 ```
 
-## 📖 API Reference
+## 🎯 Use Cases | ব্যবহারের ক্ষেত্র
+
+### Financial Applications | আর্থিক অ্যাপ্লিকেশন
+
+- **Banking Software | ব্যাংকিং সফটওয়্যার**: Account statements, transaction records
+- **Invoice Generation | ইনভয়েস তৈরি**: Professional invoices with Bengali amounts
+- **Accounting Systems | অ্যাকাউন্টিং সিস্টেম**: Financial reports and calculations
+- **Payroll Management | বেতন ব্যবস্থাপনা**: Salary slips and payment processing
+
+### E-commerce & Retail | ই-কমার্স ও খুচরা
+
+- **Online Shopping | অনলাইন কেনাকাটা**: Product pricing in Bengali
+- **Point of Sale (POS) | পয়েন্ট অফ সেল**: Receipt generation
+- **Inventory Management | ইনভেন্টরি ব্যবস্থাপনা**: Stock valuation
+- **Price Display | দাম প্রদর্শন**: Multi-language price formatting
+
+### Government & Education | সরকারি ও শিক্ষা
+
+- **Tax Calculation | কর গণনা**: Income tax and VAT calculations
+- **Educational Software | শিক্ষামূলক সফটওয়্যার**: Mathematics and finance teaching
+- **Government Forms | সরকারি ফর্ম**: Official document generation
+- **Census Data | আদমশুমারির তথ্য**: Population and economic statistics
+
+### Regional Applications | আঞ্চলিক অ্যাপ্লিকেশন
+
+- **Bangladesh | বাংলাদেশ**: BDT currency formatting
+- **West Bengal | পশ্চিমবঙ্গ**: INR with Bengali text
+- **Bengali Communities | বাংলা কমিউনিটি**: Worldwide Bengali diaspora applications
+
+## 📖 API Reference | API রেফারেন্স
 
 ### `toText(number, options)`
 
@@ -310,30 +378,72 @@ const customOptions = {
 console.log(toText(1234567.89, customOptions));
 ```
 
-## 🧪 Testing
+## 🧪 Testing | পরীক্ষা
 
-Run the included test suite:
+Run the included test suite | অন্তর্ভুক্ত টেস্ট স্যুট চালান:
 
 ```bash
 npm test
 ```
 
-## 📝 License
+## � SEO Tags | SEO ট্যাগ
+
+**Bengali/Bangla:** বাংলা টাকা ফরম্যাট, বাংলা সংখ্যা রূপান্তর, বাংলাদেশী টাকা, বাংলা অঙ্ক, কোটি লাখ হাজার, অর্বুদ খর্ব নিল পদ্ম, বাংলা ক্যালকুলেটর, টাকা গণনা, বাংলা ম্যাথ, সংখ্যা লেখা, বাংলা ডিজিট
+
+**English:** bangla money format, bengali number converter, bangladesh taka formatter, bengali currency, bengali digits, crore lakh thousand, bengali math, number to bengali text, bangla calculator, bengali financial, south asian currency, bengali localization
+
+**Applications:** invoice generator bengali, bengali accounting software, bangladesh banking, bengali ecommerce, bengali fintech, bengali payment gateway, bengali pos system, bengali receipt generator
+
+**Technical:** nodejs bengali, javascript bengali, bengali npm package, bengali api, bengali sdk, bengali library, bengali utility, bengali formatting
+
+## 📱 Compatibility | সামঞ্জস্য
+
+- ✅ **Node.js**: 12.0.0+
+- ✅ **Browser**: All modern browsers
+- ✅ **React**: Full support
+- ✅ **Vue.js**: Full support
+- ✅ **Angular**: Full support
+- ✅ **TypeScript**: Type definitions included
+- ✅ **ES6/CommonJS**: Both module systems supported
+
+## 🌍 Regional Support | আঞ্চলিক সাপোর্ট
+
+- 🇧🇩 **Bangladesh**: BDT (৳) currency formatting
+- 🇮🇳 **West Bengal, India**: INR (₹) with Bengali text
+- 🌐 **Global Bengali Communities**: Worldwide diaspora support
+
+## 📈 Performance | কর্মক্ষমতা
+
+- ⚡ **Fast**: Optimized for speed
+- 🔄 **Lightweight**: Minimal dependencies
+- 💾 **Memory Efficient**: Low memory footprint
+- 🧮 **Accurate**: Precise BigInt calculations
+
+## �📝 License | লাইসেন্স
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🤝 Contributing
+## 🤝 Contributing | অবদান
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 🐛 Issues
+বাংলা কমিউনিটির অবদান স্বাগত! পুল রিকোয়েস্ট জমা দিতে দ্বিধা করবেন না।
+
+## 🐛 Issues | সমস্যা
 
 If you find any issues or have feature requests, please create an issue on [GitHub](https://github.com/nizamseu/bangla-money-format/issues).
 
-## 🙏 Acknowledgments
+কোন সমস্যা পেলে বা নতুন ফিচারের জন্য GitHub এ ইস্যু তৈরি করুন।
+
+## 🙏 Acknowledgments | কৃতজ্ঞতা
 
 - Inspired by the need for proper Bengali number formatting in financial applications
 - Built with love for the Bengali/Bangla speaking community
+- বাংলা ভাষাভাষী কমিউনিটির জন্য ভালোবাসা দিয়ে তৈরি
+
+## 🏷️ Tags for SEO
+
+`bangla` `bengali` `money` `format` `currency` `taka` `bangladesh` `west-bengal` `number-conversion` `financial` `localization` `i18n` `south-asia` `crore` `lakh` `accounting` `invoice` `calculator` `math` `digits` `unicode` `script` `traditional` `modern` `ecommerce` `fintech` `banking` `payment` `pos` `nodejs` `javascript` `npm` `package` `library` `utility` `api` `sdk`
 
 ---
 

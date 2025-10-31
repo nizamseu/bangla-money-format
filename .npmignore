@@ -72,3 +72,5 @@ docs/
 # Temporary files
 tmp/
 temp/
+demo.js
+test.js
