@@ -43,7 +43,7 @@ const { toText, toBanglaMoney } = require("bangla-money-format");
 
 // Basic usage
 console.log(toText(1000000));
-// Output: ৳১০,০০০০০ (দশ লাখ টাকা)
+// Output: দশ লাখ টাকা
 ```
 
 ### Using ES6 Modules (import)
@@ -53,7 +53,7 @@ import { toText, toBanglaMoney } from "bangla-money-format";
 
 // Basic usage
 console.log(toText(1000000));
-// Output: ৳১০,০০০০০ (দশ লাখ টাকা)
+// Output: দশ লাখ টাকা
 ```
 
 ### Examples
@@ -61,22 +61,22 @@ console.log(toText(1000000));
 ```javascript
 // Bengali compound numbers (accurate)
 console.log(toText(75));
-// Output: ৳৭৫ (পঁচাত্তর টাকা)
+// Output: পঁচাত্তর টাকা
 
 console.log(toText(555));
-// Output: ৳৫৫৫ (পাঁচ শত পঞ্চান্ন টাকা)
+// Output: পাঁচ শত পঞ্চান্ন টাকা
 
 // English output
 console.log(toText(1000000, { textInEnglish: true }));
-// Output: ৳১০,০০০০০ (ten lakh taka)
+// Output: ten lakh taka
 
 // Short form
 console.log(toText(1500000, { useShortForm: true }));
-// Output: ৳১৫,০০০০০ (1.5M টাকা)
+// Output: 1.5M টাকা
 
 // Traditional scale
 console.log(toText(1000000000, { useTraditionalScale: true }));
-// Output: ৳১,০০০০০০০০০ (একশত কোটি টাকা)
+// Output: একশত কোটি টাকা
 ```
 
 ## Use Cases
@@ -121,24 +121,72 @@ Converts a number to Bengali text representation with money formatting.
 
 #### Options
 
-| Option                  | Type    | Default                         | Description                             |
-| ----------------------- | ------- | ------------------------------- | --------------------------------------- |
-| `showCurrency`          | Boolean | `true`                          | Show currency symbol (৳)                |
-| `currency`              | String  | `"৳"`                           | Currency symbol to use                  |
-| `showTakaWord`          | Boolean | `true`                          | Include "টাকা" in the text              |
-| `useTraditionalScale`   | Boolean | `false`                         | Use traditional Bengali scales          |
-| `textInEnglish`         | Boolean | `false`                         | Convert Bengali text to English         |
-| `useShortForm`          | Boolean | `false`                         | Use K, M, B, T notation                 |
-| `showEnglishEquivalent` | Boolean | `false`                         | Show English equivalents in parentheses |
-| `showFraction`          | Boolean | `true`                          | Include fraction part                   |
-| `fractionPrecision`     | Number  | `2`                             | Decimal places for fractions            |
-| `fractionUnit`          | String  | `"পয়সা"`                       | Unit for fraction part                  |
-| `negativeFormat`        | String  | `"minus"`                       | How to display negative numbers         |
-| `template`              | String  | `"{currency}{amount} ({text})"` | Output template                         |
+| Option                  | Type    | Default    | Description                             |
+| ----------------------- | ------- | ---------- | --------------------------------------- |
+| `showCurrency`          | Boolean | `true`     | Show currency symbol (৳)                |
+| `currency`              | String  | `"৳"`      | Currency symbol to use                  |
+| `showTakaWord`          | Boolean | `true`     | Include "টাকা" in the text              |
+| `useTraditionalScale`   | Boolean | `false`    | Use traditional Bengali scales          |
+| `textInEnglish`         | Boolean | `false`    | Convert Bengali text to English         |
+| `useShortForm`          | Boolean | `false`    | Use K, M, B, T notation                 |
+| `showEnglishEquivalent` | Boolean | `false`    | Show English equivalents in parentheses |
+| `showFraction`          | Boolean | `true`     | Include fraction part                   |
+| `fractionPrecision`     | Number  | `2`        | Decimal places for fractions            |
+| `fractionUnit`          | String  | `"পয়সা"`  | Unit for fraction part                  |
+| `negativeFormat`        | String  | `"minus"`  | How to display negative numbers         |
+| `template`              | String  | `"{text}"` | Output template for toText function     |
 
 ### `toBanglaMoney(number, options)`
 
 Formats a number as Bengali currency without text conversion.
+
+#### Parameters
+
+- `number` (Number): The number to format as currency
+- `options` (Object): Configuration options (same as toText)
+
+#### toBanglaMoney Examples
+
+```javascript
+const { toBanglaMoney } = require("bangla-money-format");
+
+// Basic usage - only currency formatting
+console.log(toBanglaMoney(1000));
+// ৳১,০০০
+
+console.log(toBanglaMoney(50000));
+// ৳৫০,০০০
+
+console.log(toBanglaMoney(1000000));
+// ৳১০,০০,০০০
+
+console.log(toBanglaMoney(25000000));
+// ৳২,৫০,০০,০০০
+
+// Large numbers
+console.log(toBanglaMoney(1000000000));
+// ৳১,০০,০০,০০,০০,০০০
+
+// Decimal numbers
+console.log(toBanglaMoney(1500.75));
+// ৳১,৫০০
+
+// Negative numbers
+console.log(toBanglaMoney(-5000));
+// -৳৫,০০০
+
+// Custom currency symbol
+console.log(toBanglaMoney(1000, { currency: "BDT" }));
+// BDT১,০০০
+
+// No currency symbol
+console.log(toBanglaMoney(1000, { showCurrency: false }));
+// ১,০০০
+
+// Different negative format
+console.log(toBanglaMoney(-1000, { negativeFormat: "parenthesis" }));
+// (৳১,০০০)
+```
 
 ## Usage Examples
 
@@ -149,24 +197,24 @@ const { toText } = require("bangla-money-format");
 
 // Compound numbers (accurate Bengali)
 console.log(toText(75));
-// ৳৭৫ (পঁচাত্তর টাকা)
+// পঁচাত্তর টাকা
 
 console.log(toText(55));
-// ৳৫৫ (পঞ্চান্ন টাকা)
+// পঞ্চান্ন টাকা
 
 console.log(toText(99));
-// ৳৯৯ (নিরানব্বই টাকা)
+// নিরানব্বই টাকা
 
 // Small numbers
 console.log(toText(1500));
-// ৳১৫০০ (এক হাজার পাঁচ শত টাকা)
+// এক হাজার পাঁচ শত টাকা
 
 // Large numbers
 console.log(toText(1000000));
-// ৳১০,০০০০০ (দশ লাখ টাকা)
+// দশ লাখ টাকা
 
 console.log(toText(10000000));
-// ৳১,০০০০০০০ (এক কোটি টাকা)
+// এক কোটি টাকা
 ```
 
 ### Traditional vs Modern Scale
@@ -174,14 +222,14 @@ console.log(toText(10000000));
 ```javascript
 // Modern scale (default)
 console.log(toText(1000000000));
-// ৳১,০০০০০০০০০ (এক শত কোটি টাকা)
+// এক শত কোটি টাকা
 
 // Traditional scale with improved terms
 console.log(toText(1000000000, { useTraditionalScale: true }));
-// ৳১,০০০০০০০০০ (একশত কোটি টাকা)
+// একশত কোটি টাকা
 
 console.log(toText(1000000000000, { useTraditionalScale: true }));
-// ৳১০,০০০০০০০০০০০ (এক লক্ষ কোটি টাকা)
+// এক লক্ষ কোটি টাকা
 
 // With English equivalents
 console.log(
@@ -190,7 +238,7 @@ console.log(
     showEnglishEquivalent: true,
   })
 );
-// ৳১০,০০০০০০০০০০০ (এক লক্ষ কোটি (এক ট্রিলিয়ন) টাকা)
+// এক লক্ষ কোটি (এক ট্রিলিয়ন) টাকা
 ```
 
 ### Improved Traditional Scale System
@@ -224,11 +272,11 @@ console.log(
 ```javascript
 // Bengali text (default)
 console.log(toText(125000));
-// ৳১,২৫০০০ (এক লাখ বিশ পাঁচ হাজার টাকা)
+// এক লাখ বিশ পাঁচ হাজার টাকা
 
 // English text
 console.log(toText(125000, { textInEnglish: true }));
-// ৳১,২৫০০০ (one lakh twenty five thousand taka)
+// one lakh twenty five thousand taka
 
 // Traditional with English equivalents
 console.log(
@@ -237,7 +285,7 @@ console.log(
     showEnglishEquivalent: true,
   })
 );
-// ৳১,০০০০০০০০০ (এক অর্বুদ (এক বিলিয়ন) টাকা)
+// এক অর্বুদ (এক বিলিয়ন) টাকা
 ```
 
 ### Short Form Notation
@@ -245,24 +293,24 @@ console.log(
 ```javascript
 // Bengali short form
 console.log(toText(1500, { useShortForm: true }));
-// ৳১৫০০ (1.5K টাকা)
+// 1.5K টাকা
 
 console.log(toText(1500000, { useShortForm: true }));
-// ৳১৫,০০০০০ (1.5M টাকা)
+// 1.5M টাকা
 
 console.log(toText(1500000000, { useShortForm: true }));
-// ৳১,৫০০০০০০০০ (1.5B টাকা)
+// 1.5B টাকা
 
 // English short form
 console.log(toText(1500000, { useShortForm: true, textInEnglish: true }));
-// ৳১৫,০০০০০ (1.5M taka)
+// 1.5M taka
 ```
 
 ### Negative Numbers
 
 ```javascript
 console.log(toText(-5000, { negativeFormat: "word" }));
-// ৳৫০০০ (ঋণ পাঁচ হাজার টাকা)
+// ঋণ পাঁচ হাজার টাকা
 
 console.log(
   toText(-5000, {
@@ -270,17 +318,17 @@ console.log(
     textInEnglish: true,
   })
 );
-// ৳৫০০০ (negative five thousand taka)
+// negative five thousand taka
 ```
 
 ### Fractions
 
 ```javascript
 console.log(toText(1500.75));
-// ৳১৫০০ (এক হাজার পাঁচ শত টাকা সত্তর পাঁচ পয়সা)
+// এক হাজার পাঁচ শত টাকা সত্তর পাঁচ পয়সা
 
 console.log(toText(1500.75, { textInEnglish: true }));
-// ৳১৫০০ (one thousand five hundred taka seventy five paisa)
+// one thousand five hundred taka seventy five paisa
 ```
 
 ### Custom Templates
@@ -290,17 +338,17 @@ console.log(toText(1500.75, { textInEnglish: true }));
 console.log(toText(1000000, { template: "{text}" }));
 // দশ লাখ টাকা
 
-// Amount only
-console.log(toText(1000000, { template: "{currency}{amount}" }));
-// ৳১০,০০০০০
+// Amount only with toBanglaMoney
+console.log(toBanglaMoney(1000000));
+// ৳১০,০০,০০০
 
-// Custom format
+// Custom format using template
 console.log(
   toText(1000000, {
     template: "Amount: {currency}{amount} | Text: {text}",
   })
 );
-// Amount: ৳১০,০০০০০ | Text: দশ লাখ টাকা
+// Amount: ৳১০,০০,০০০ | Text: দশ লাখ টাকা
 ```
 
 ## Traditional Bengali Number System

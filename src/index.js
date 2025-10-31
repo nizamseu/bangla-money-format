@@ -17,7 +17,7 @@ const defaultOptions = {
   fractionUnit: "পয়সা",
   negativeFormat: "minus",
   abbreviation: false,
-  template: "{currency}{amount} ({text})",
+  template: "{text}",
   useTraditionalScale: false,
   showEnglishEquivalent: false,
   textInEnglish: false, // New: Convert Bengali text to English
@@ -556,11 +556,26 @@ function toBanglaMoney(num, options = {}) {
     else if (opt.negativeFormat === "parenthesis") prefix = "(";
   }
 
-  // Handle very large numbers by converting to string before toLocaleString
-  let formatted = String(Math.floor(number)).replace(
-    /(\d)(?=(\d{2})+\d{3}$)/,
-    "$1,"
-  ); // Simple manual comma for Indian style
+  // Handle very large numbers with proper Indian number system comma formatting
+  let formatted = String(Math.floor(number));
+
+  // Indian number system: x,xx,xxx (after first 3 digits, then every 2 digits)
+  if (formatted.length > 3) {
+    // Reverse the string for easier processing
+    let reversed = formatted.split("").reverse().join("");
+    let result = "";
+
+    for (let i = 0; i < reversed.length; i++) {
+      if (i === 3 || (i > 3 && (i - 3) % 2 === 0)) {
+        result += ",";
+      }
+      result += reversed[i];
+    }
+
+    // Reverse back to get the correct order
+    formatted = result.split("").reverse().join("");
+  }
+
   formatted = formatted.replace(/\d/g, (d) => banglaDigits[parseInt(d)]);
 
   if (opt.showCurrency) formatted = opt.currency + formatted;
