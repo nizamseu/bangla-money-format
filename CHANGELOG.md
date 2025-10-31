@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-10-31
+
+### Improved
+
+- **Traditional Scale System**: Enhanced traditional Bengali scale names for better accuracy
+  - Updated to use proper traditional terms: "একশত কোটি" (অর্বুদ), "এক হাজার কোটি" (খর্ব), etc.
+  - Improved scale progression: অর্বুদ→খর্ব→নিল→পদ্ম→শঙ্খ→মহাশঙ্খ→অন্ত্য→মধ্য→পরার্ধ→অপরার্ধ→উৎপল→নিকুমুদ
+  - Better linguistic consistency for traditional number representation
+- **Scale Display Logic**: Fixed display to show clean scale names (e.g., "একশত কোটি" instead of "এক একশত কোটি")
+
+### Updated
+
+- English equivalent mappings to match new traditional scale terms
+- Documentation to reflect improved traditional scale system
+
 ## [1.1.0] - 2025-10-31
 
 ### Fixed

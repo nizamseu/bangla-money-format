@@ -1,7 +1,7 @@
 {
   "name": "bangla-money-format",
-  "version": "1.1.0",
-  "description": "A comprehensive Bengali/Bangla money and number formatting library with accurate compound numbers, traditional scales, English conversion, and short forms",
+  "version": "1.2.0",
+  "description": "A comprehensive Bengali/Bangla money and number formatting library with accurate compound numbers, improved traditional scales, English conversion, and short forms",
   "main": "src/index.js",
   "scripts": {
     "test": "node test.js",

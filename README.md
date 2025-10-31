@@ -9,7 +9,7 @@ A comprehensive Bengali/Bangla money and number formatting library that supports
 
 - 🔢 **Accurate Bengali Number Formatting**: Convert numbers to Bengali text with proper compound number grammar (পঁচাত্তর, পঞ্চান্ন, নিরানব্বই)
 - 💰 **Money Formatting**: Format currency with Bengali digits and text
-- 🏛️ **Traditional Scale Support**: Use traditional Bengali number scales (অর্বুদ, খর্ব, নিল, পদ্ম, etc.)
+- 🏛️ **Improved Traditional Scale Support**: Enhanced traditional Bengali number scales with proper terms (একশত কোটি, এক হাজার কোটি, এক লক্ষ কোটি)
 - 🌍 **English Conversion**: Convert Bengali text to English equivalents
 - ⚡ **Short Forms**: Modern K, M, B, T notation support
 - 🔄 **Dual Language**: Support for both Bengali and English output
@@ -136,8 +136,46 @@ console.log(toText(99));
 console.log(toText(1000000000));
 // ৳১,০০০০০০০০০ (এক শত কোটি টাকা)
 
-// Traditional scale
+// Traditional scale with improved terms
 console.log(toText(1000000000, { useTraditionalScale: true }));
+// ৳১,০০০০০০০০০ (একশত কোটি টাকা)
+
+console.log(toText(1000000000000, { useTraditionalScale: true }));
+// ৳১০,০০০০০০০০০০০ (এক লক্ষ কোটি টাকা)
+
+// With English equivalents
+console.log(
+  toText(1000000000000, {
+    useTraditionalScale: true,
+    showEnglishEquivalent: true,
+  })
+);
+// ৳১০,০০০০০০০০০০০ (এক লক্ষ কোটি (এক ট্রিলিয়ন) টাকা)
+```
+
+### 🎯 Improved Traditional Scale System
+
+Version 1.2.0 introduces enhanced traditional Bengali scale terms:
+
+| Scale  | Value | Traditional Term | English Equivalent |
+| ------ | ----- | ---------------- | ------------------ |
+| অর্বুদ | 10⁹   | একশত কোটি        | One Billion        |
+| খর্ব   | 10¹⁰  | এক হাজার কোটি    | Ten Billion        |
+| নিল    | 10¹¹  | দশ হাজার কোটি    | Hundred Billion    |
+| পদ্ম   | 10¹²  | এক লক্ষ কোটি     | One Trillion       |
+| শঙ্খ   | 10¹³  | দশ লক্ষ কোটি     | Ten Trillion       |
+
+### Bengali to English Conversion
+
+```javascript
+// Convert Bengali text to English
+console.log(
+  toText(75000000000, {
+    useTraditionalScale: true,
+    textInEnglish: true,
+  })
+);
+// ৳৭৫,০০০০০০০০০০ (seventy five ten billion taka)
 // ৳১,০০০০০০০০০ (এক অর্বুদ টাকা)
 ```
 
