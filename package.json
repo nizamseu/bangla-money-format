@@ -1,6 +1,6 @@
 {
   "name": "bangla-money-format",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "🇧🇩 Complete Bengali/Bangla money & number formatting library for JavaScript. Convert numbers to Bengali text (৭৫→পঁচাত্তর টাকা), format Bangladesh Taka currency with proper comma placement (১০০০০০০→৳১০,০০,০০০). Perfect for React, Vue, Angular, Node.js applications. Features: compound numbers, traditional scales (কোটি/লাখ), English conversion, short forms (K,M,B,T), Indian number system. Best NPM package for Bengali currency formatting.",
   "main": "src/index.js",
   "module": "src/index.js",
