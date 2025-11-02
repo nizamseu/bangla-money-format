@@ -5,6 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.2] - 2025-11-02
+
+### Changed
+
+- **Breaking Change**: `toText()` function now returns only Bengali text without currency symbols or amount formatting
+  - Previous: `toText(10000000)` → `"৳১,০০০০০০০ (এক কোটি টাকা)"`
+  - Current: `toText(10000000)` → `"এক কোটি টাকা"`
+  - Changed default template from `"{currency}{amount} ({text})"` to `"{text}"`
+
+### Fixed
+
+- **toBanglaMoney Comma Formatting**: Fixed comma placement to follow proper Indian number system
+  - Now correctly formats: 1,000 → `৳১,০০০`, 1,000,000 → `৳১০,০০,০০০`, 10,000,000 → `৳১,০০,০০,০০০`
+  - Implemented proper Bengali number grouping logic (after first 3 digits, then every 2 digits)
+
+### Improved
+
+- **API Clarity**: Clear separation between text conversion (`toText`) and currency formatting (`toBanglaMoney`)
+- **Documentation**: Updated README.md with comprehensive examples for both functions
+- **API Reference**: Enhanced documentation showing the distinct purposes of each function
+
+### Migration Guide
+
+For users upgrading from v1.2.1 or earlier:
+
+- Use `toText()` for Bengali text conversion only
+- Use `toBanglaMoney()` for currency formatting with proper commas
+- To get the old combined format: `toBanglaMoney(amount) + " (" + toText(amount) + ")"`
+- Or use custom template: `toText(amount, { template: "{currency}{amount} ({text})" })`
+
 ## [1.2.0] - 2025-10-31
 
 ### Improved
