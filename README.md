@@ -44,6 +44,18 @@ const { toText, toBanglaMoney } = require("bangla-money-format");
 // Basic usage
 console.log(toText(1000000));
 // Output: দশ লাখ টাকা
+
+console.log(toBanglaMoney(1000000));
+// Output: ৳১০,০০,০০০
+
+console.log(toText(1500, { useShortForm: true }));
+// 1.5K টাকা
+
+console.log(toText(1500.75));
+// এক হাজার পাঁচ শত টাকা সত্তর পাঁচ পয়সা
+
+console.log(toText(1500.75, { textInEnglish: true }));
+// one thousand five hundred taka seventy five paisa
 ```
 
 ### Using ES6 Modules (import)
@@ -54,6 +66,18 @@ import { toText, toBanglaMoney } from "bangla-money-format";
 // Basic usage
 console.log(toText(1000000));
 // Output: দশ লাখ টাকা
+
+console.log(toBanglaMoney(1000000));
+// Output: ৳১০,০০,০০০
+
+console.log(toText(1500, { useShortForm: true }));
+// 1.5K টাকা
+
+console.log(toText(1500.75));
+// এক হাজার পাঁচ শত টাকা সত্তর পাঁচ পয়সা
+
+console.log(toText(1500.75, { textInEnglish: true }));
+// one thousand five hundred taka seventy five paisa
 ```
 
 ### Examples
