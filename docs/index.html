@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Bangla Money Format - Best NPM Package for Bengali Currency Formatting |
-      JavaScript Library
-    </title>
+    <title>Bangla Money Format - Bengali Currency Formatting NPM Package</title>
     <meta
       name="description"
       content="Complete Bengali/Bangla money and number formatting library for JavaScript. Convert numbers to Bengali text, format Bangladesh Taka currency with proper comma placement. Perfect for React, Vue, Angular, Node.js applications."
@@ -56,7 +53,7 @@
     <!-- Google Analytics (Optional - replace with your tracking ID) -->
     <script
       async
-      src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
+      src="https://www.googletagmanager.com/gtag/js?id=G-326VTQTVT1"
     ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -64,7 +61,7 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", "GA_MEASUREMENT_ID");
+      gtag("config", "G-326VTQTVT1");
     </script>
 
     <!-- Schema.org JSON-LD -->
@@ -81,7 +78,7 @@
         "offers": {
           "@type": "Offer",
           "price": "0",
-          "priceCurrency": "USD"
+          "priceCurrency": "BDT"
         },
         "author": {
           "@type": "Person",
@@ -103,7 +100,6 @@
       }
     </script>
 
-    <!-- CSS Styles -->
     <style>
       * {
         margin: 0;
@@ -112,266 +108,377 @@
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
         line-height: 1.6;
-        color: #333;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #2c3e50;
+        background-color: #f8f9fa;
       }
 
       .container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 20px;
+        padding: 0 20px;
       }
 
+      /* Header */
       .header {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        padding: 30px;
-        margin-bottom: 30px;
+        background: white;
+        border-bottom: 1px solid #e9ecef;
+        padding: 2rem 0;
+        margin-bottom: 3rem;
+      }
+
+      .header-content {
         text-align: center;
-        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
       }
 
       .header h1 {
-        font-size: 2.5em;
-        margin-bottom: 10px;
-        background: linear-gradient(45deg, #667eea, #764ba2);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
       }
 
       .header .subtitle {
-        font-size: 1.2em;
-        color: #666;
-        margin-bottom: 20px;
+        font-size: 1.125rem;
+        color: #6c757d;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .badges {
         display: flex;
         justify-content: center;
-        gap: 10px;
+        gap: 0.75rem;
         flex-wrap: wrap;
-        margin-bottom: 20px;
+        margin-bottom: 2rem;
       }
 
       .badge {
-        padding: 8px 16px;
-        background: #28a745;
+        display: inline-block;
+        padding: 0.375rem 0.75rem;
+        background: #6c757d;
         color: white;
-        border-radius: 20px;
         text-decoration: none;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
         font-weight: 500;
-        transition: transform 0.3s ease;
+        transition: all 0.2s ease;
       }
 
       .badge:hover {
-        transform: translateY(-2px);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
 
       .badge.npm {
         background: #cb3837;
       }
       .badge.github {
-        background: #333;
+        background: #24292e;
       }
       .badge.license {
         background: #007ec6;
       }
 
-      .demo-section {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        padding: 30px;
-        margin-bottom: 30px;
-        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+      .version-info {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        font-size: 0.875rem;
+        color: #6c757d;
       }
 
-      .demo-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin-top: 30px;
-      }
-
-      .demo-card {
-        background: #f8f9fa;
-        border-radius: 10px;
-        padding: 20px;
-        border-left: 4px solid #667eea;
-      }
-
-      .demo-card h3 {
-        color: #667eea;
-        margin-bottom: 15px;
-      }
-
-      .code-block {
-        background: #2d3748;
-        color: #e2e8f0;
-        padding: 20px;
-        border-radius: 8px;
-        font-family: "Courier New", monospace;
-        margin: 10px 0;
-        overflow-x: auto;
-      }
-
-      .output {
-        background: #e6fffa;
-        border: 1px solid #38b2ac;
-        border-radius: 8px;
-        padding: 15px;
-        margin: 10px 0;
-        font-weight: 500;
-      }
-
-      .features {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        margin: 30px 0;
-      }
-
-      .feature {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 20px;
-        border-radius: 10px;
+      .version-item {
         text-align: center;
-        color: white;
       }
 
+      .version-number {
+        display: block;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #2c3e50;
+      }
+
+      /* Installation */
       .install-section {
-        background: #28a745;
-        color: white;
-        padding: 30px;
-        border-radius: 15px;
+        background: white;
+        border-radius: 0.5rem;
+        border: 1px solid #e9ecef;
+        padding: 2rem;
+        margin-bottom: 3rem;
         text-align: center;
-        margin: 30px 0;
       }
 
       .install-section h2 {
-        margin-bottom: 20px;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #2c3e50;
       }
 
       .install-commands {
         display: flex;
         justify-content: center;
-        gap: 20px;
+        gap: 1rem;
         flex-wrap: wrap;
       }
 
       .install-cmd {
-        background: rgba(0, 0, 0, 0.2);
-        padding: 15px 25px;
-        border-radius: 8px;
-        font-family: monospace;
-        font-size: 1.1em;
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        padding: 0.75rem 1rem;
+        border-radius: 0.375rem;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        font-size: 0.875rem;
+        color: #495057;
       }
 
-      .stats {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        margin: 20px 0;
+      /* Sections */
+      .section {
+        background: white;
+        border-radius: 0.5rem;
+        border: 1px solid #e9ecef;
+        padding: 2rem;
+        margin-bottom: 3rem;
       }
 
-      .stat {
+      .section h2 {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+        color: #2c3e50;
+      }
+
+      .section h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: #495057;
+      }
+
+      /* Features Grid */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .feature-card {
+        padding: 1.5rem;
+        border: 1px solid #e9ecef;
+        border-radius: 0.375rem;
+        background: #f8f9fa;
+      }
+
+      .feature-card h3 {
+        font-size: 1.125rem;
+        margin-bottom: 0.5rem;
+        color: #2c3e50;
+      }
+
+      .feature-card p {
+        color: #6c757d;
+        font-size: 0.875rem;
+      }
+
+      /* Demo Grid */
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .demo-card {
+        border: 1px solid #e9ecef;
+        border-radius: 0.375rem;
+        overflow: hidden;
+      }
+
+      .demo-card h3 {
+        background: #f8f9fa;
+        padding: 1rem;
+        margin: 0;
+        border-bottom: 1px solid #e9ecef;
+        font-size: 1rem;
+        color: #495057;
+      }
+
+      .code-block {
+        background: #2d3748;
+        color: #e2e8f0;
+        padding: 1rem;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        font-size: 0.875rem;
+        overflow-x: auto;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .output {
+        background: #f8f9fa;
+        padding: 1rem;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        font-size: 0.875rem;
+        color: #495057;
+      }
+
+      /* API Documentation */
+      .api-method {
+        border: 1px solid #e9ecef;
+        border-radius: 0.375rem;
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+      }
+
+      .api-method h3 {
+        background: #f8f9fa;
+        padding: 1rem;
+        margin: 0;
+        border-bottom: 1px solid #e9ecef;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        color: #2c3e50;
+      }
+
+      .api-description {
+        padding: 1rem;
+      }
+
+      /* Use Cases */
+      .use-cases-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .use-case {
+        padding: 1rem;
+        border: 1px solid #e9ecef;
+        border-radius: 0.375rem;
         text-align: center;
-        color: white;
       }
 
-      .stat-number {
-        font-size: 2em;
-        font-weight: bold;
-        display: block;
+      .use-case h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #2c3e50;
       }
 
+      .use-case p {
+        font-size: 0.875rem;
+        color: #6c757d;
+      }
+
+      /* Footer */
       .footer {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        padding: 20px;
+        background: white;
+        border-top: 1px solid #e9ecef;
+        padding: 2rem 0;
         text-align: center;
-        margin-top: 30px;
+        color: #6c757d;
+        margin-top: 3rem;
       }
 
+      .footer a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Demo Link */
+      .demo-link {
+        display: inline-block;
+        background: #007bff;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.375rem;
+        text-decoration: none;
+        font-weight: 500;
+        margin-top: 1rem;
+        transition: background 0.2s ease;
+      }
+
+      .demo-link:hover {
+        background: #0056b3;
+      }
+
+      /* Responsive */
       @media (max-width: 768px) {
         .header h1 {
-          font-size: 2em;
+          font-size: 2rem;
         }
 
-        .demo-grid {
-          grid-template-columns: 1fr;
+        .container {
+          padding: 0 15px;
         }
 
         .install-commands {
           flex-direction: column;
           align-items: center;
         }
+
+        .version-info {
+          gap: 1rem;
+        }
       }
     </style>
-
-    <!-- Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "GA_MEASUREMENT_ID");
-    </script>
   </head>
   <body>
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <h1>Bangla Money Format</h1>
+          <p class="subtitle">
+            A comprehensive Bengali/Bangla money and number formatting library
+            with accurate compound numbers, traditional scales, English
+            conversion, and modern short forms. Perfect for financial
+            applications, e-commerce platforms, banking systems, and any
+            application requiring Bengali number formatting.
+          </p>
+
+          <div class="badges">
+            <a
+              href="https://www.npmjs.com/package/bangla-money-format"
+              class="badge npm"
+              >NPM Package</a
+            >
+            <a
+              href="https://github.com/nizamseu/bangla-money-format"
+              class="badge github"
+              >GitHub</a
+            >
+            <a href="https://opensource.org/licenses/MIT" class="badge license"
+              >MIT License</a
+            >
+          </div>
+
+          <div class="version-info">
+            <div class="version-item">
+              <span class="version-number">v1.2.4</span>
+              <span>Latest Version</span>
+            </div>
+            <div class="version-item">
+              <span class="version-number">0</span>
+              <span>Dependencies</span>
+            </div>
+            <div class="version-item">
+              <span class="version-number">32+</span>
+              <span>Keywords</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
     <div class="container">
-      <!-- Header Section -->
-      <header class="header">
-        <h1>🇧🇩 Bangla Money Format</h1>
-        <p class="subtitle">
-          Complete Bengali/Bangla Money & Number Formatting NPM Package for
-          JavaScript
-        </p>
-
-        <div class="badges">
-          <a
-            href="https://www.npmjs.com/package/bangla-money-format"
-            class="badge npm"
-            >NPM Package</a
-          >
-          <a
-            href="https://github.com/nizamseu/bangla-money-format"
-            class="badge github"
-            >GitHub Repository</a
-          >
-          <a href="https://opensource.org/licenses/MIT" class="badge license"
-            >MIT License</a
-          >
-        </div>
-
-        <div class="stats">
-          <div class="stat">
-            <span class="stat-number">1.2.4</span>
-            <span>Latest Version</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">32+</span>
-            <span>Keywords</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">0</span>
-            <span>Dependencies</span>
-          </div>
-        </div>
-      </header>
-
-      <!-- Installation Section -->
+      <!-- Installation -->
       <section class="install-section">
-        <h2>🚀 Quick Installation</h2>
+        <h2>Installation</h2>
         <div class="install-commands">
           <div class="install-cmd">npm install bangla-money-format</div>
           <div class="install-cmd">yarn add bangla-money-format</div>
@@ -379,221 +486,242 @@
         </div>
       </section>
 
-      <!-- Features Section -->
-      <section class="demo-section">
-        <h2>✨ Key Features</h2>
-        <div class="features">
-          <div class="feature">
-            <h3>🔢 Accurate Bengali Numbers</h3>
-            <p>Perfect compound numbers (৭৫→পঁচাত্তর টাকা)</p>
+      <!-- Features -->
+      <section class="section">
+        <h2>Features</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>Accurate Bengali Number Formatting</h3>
+            <p>
+              Convert numbers to Bengali text with proper compound number
+              grammar
+            </p>
           </div>
-          <div class="feature">
-            <h3>💰 Currency Formatting</h3>
-            <p>Proper comma placement (১০০০০০০→৳১০,০০,০০০)</p>
+          <div class="feature-card">
+            <h3>Money Formatting</h3>
+            <p>Format currency with Bengali digits and text</p>
           </div>
-          <div class="feature">
-            <h3>🏛️ Traditional Scales</h3>
-            <p>Support for কোটি, লাখ, হাজার, অর্বুদ, খর্ব</p>
+          <div class="feature-card">
+            <h3>Traditional Scale Support</h3>
+            <p>Enhanced traditional Bengali number scales with proper terms</p>
           </div>
-          <div class="feature">
-            <h3>🌍 English Conversion</h3>
+          <div class="feature-card">
+            <h3>English Conversion</h3>
             <p>Convert Bengali text to English equivalents</p>
           </div>
-          <div class="feature">
-            <h3>⚡ Short Forms</h3>
+          <div class="feature-card">
+            <h3>Short Forms</h3>
             <p>Modern K, M, B, T notation support</p>
           </div>
-          <div class="feature">
-            <h3>🔧 Framework Ready</h3>
-            <p>Works with React, Vue, Angular, Node.js</p>
+          <div class="feature-card">
+            <h3>Framework Ready</h3>
+            <p>ES6 & CommonJS support for React, Vue, Angular, Node.js</p>
           </div>
         </div>
       </section>
 
-      <!-- Live Demo Section -->
-      <section class="demo-section">
-        <h2>🎯 Live Interactive Demo</h2>
+      <!-- Quick Start -->
+      <section class="section">
+        <h2>Quick Start</h2>
 
         <div class="demo-grid">
           <div class="demo-card">
-            <h3>Text Conversion (toText)</h3>
+            <h3>Using CommonJS (require)</h3>
             <div class="code-block">
-              const { toText } = require('bangla-money-format');
-              console.log(toText(10000000)); console.log(toText(555));
-              console.log(toText(75));
-            </div>
-            <div class="output">
-              এক কোটি টাকা<br />
-              পাঁচ শত পঞ্চান্ন টাকা<br />
-              পঁচাত্তর টাকা
+              const { toText, toBanglaMoney } = require("bangla-money-format");
+              // Basic usage console.log(toText(1000000)); // Output: দশ লাখ
+              টাকা console.log(toBanglaMoney(1000000)); // Output: ৳১০,০০,০০০
             </div>
           </div>
 
           <div class="demo-card">
-            <h3>Currency Formatting (toBanglaMoney)</h3>
+            <h3>Using ES6 Modules (import)</h3>
             <div class="code-block">
-              const { toBanglaMoney } = require('bangla-money-format');
-              console.log(toBanglaMoney(10000000));
-              console.log(toBanglaMoney(1500000));
-              console.log(toBanglaMoney(50000));
+              import { toText, toBanglaMoney } from "bangla-money-format"; //
+              Basic usage console.log(toText(1000000)); // Output: দশ লাখ টাকা
+              console.log(toBanglaMoney(1000000)); // Output: ৳১০,০০,০০০
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Examples -->
+      <section class="section">
+        <h2>Examples</h2>
+
+        <div class="demo-grid">
+          <div class="demo-card">
+            <h3>Bengali Compound Numbers</h3>
+            <div class="code-block">
+              console.log(toText(75)); console.log(toText(555));
+              console.log(toText(1500));
             </div>
             <div class="output">
-              ৳১,০০,০০,০০০<br />
-              ৳১৫,০০,০০০<br />
-              ৳৫০,০০০
+              পঁচাত্তর টাকা পাঁচ শত পঞ্চান্ন টাকা এক হাজার পাঁচ শত টাকা
             </div>
+          </div>
+
+          <div class="demo-card">
+            <h3>Currency Formatting</h3>
+            <div class="code-block">
+              console.log(toBanglaMoney(50000));
+              console.log(toBanglaMoney(1500000));
+              console.log(toBanglaMoney(10000000));
+            </div>
+            <div class="output">৳৫০,০০০ ৳১৫,০০,০০০ ৳১,০০,০০,০০০</div>
           </div>
 
           <div class="demo-card">
             <h3>English Conversion</h3>
             <div class="code-block">
-              toText(1000000, { textInEnglish: true }); toText(75, {
-              textInEnglish: true }); toText(555, { textInEnglish: true });
+              console.log(toText(1000000, { textInEnglish: true }));
+              console.log(toText(75, { textInEnglish: true }));
+              console.log(toText(1500.75, { textInEnglish: true }));
             </div>
             <div class="output">
-              ten lakh taka<br />
-              seventy five taka<br />
-              five hundred fifty five taka
+              ten lakh taka seventy five taka one thousand five hundred taka
+              seventy five paisa
             </div>
           </div>
 
           <div class="demo-card">
             <h3>Short Form Notation</h3>
             <div class="code-block">
-              toText(1500000, { useShortForm: true }); toText(2500, {
-              useShortForm: true }); toText(1500000000, { useShortForm: true });
+              console.log(toText(1500, { useShortForm: true }));
+              console.log(toText(1500000, { useShortForm: true }));
+              console.log(toText(1500000000, { useShortForm: true }));
             </div>
-            <div class="output">
-              1.5M টাকা<br />
-              2.5K টাকা<br />
-              1.5B টাকা
-            </div>
+            <div class="output">1.5K টাকা 1.5M টাকা 1.5B টাকা</div>
           </div>
 
           <div class="demo-card">
             <h3>Traditional Scale</h3>
             <div class="code-block">
-              toText(1000000000, { useTraditionalScale: true });
-              toText(10000000000, { useTraditionalScale: true });
+              console.log(toText(1000000000, { useTraditionalScale: true }));
+              console.log(toText(1000000000000, { useTraditionalScale: true }));
             </div>
-            <div class="output">
-              একশত কোটি টাকা<br />
-              এক হাজার কোটি টাকা
-            </div>
+            <div class="output">একশত কোটি টাকা এক লক্ষ কোটি টাকা</div>
           </div>
 
           <div class="demo-card">
-            <h3>Framework Integration</h3>
+            <h3>Fractions</h3>
             <div class="code-block">
-              // React Component import { toText } from 'bangla-money-format';
-              function PriceDisplay({ amount }) { return
-              &lt;span&gt;{toText(amount)}&lt;/span&gt;; }
+              console.log(toText(1500.75)); console.log(toText(1500.75, {
+              textInEnglish: true }));
             </div>
             <div class="output">
-              Perfect for React, Vue, Angular applications
+              এক হাজার পাঁচ শত টাকা সত্তর পাঁচ পয়সা one thousand five hundred
+              taka seventy five paisa
+            </div>
+          </div>
+        </div>
+
+        <a href="demo.html" class="demo-link">Try Interactive Demo</a>
+      </section>
+
+      <!-- API Documentation -->
+      <section class="section">
+        <h2>API Reference</h2>
+
+        <div class="api-method">
+          <h3>toText(number, options)</h3>
+          <div class="api-description">
+            <p>
+              Converts a number to Bengali text representation with money
+              formatting.
+            </p>
+            <div class="code-block">
+              // Basic usage toText(1000000) // "দশ লাখ টাকা" // With options
+              toText(75, { textInEnglish: true }) // "seventy five taka"
+              toText(1500000, { useShortForm: true }) // "1.5M টাকা"
+            </div>
+          </div>
+        </div>
+
+        <div class="api-method">
+          <h3>toBanglaMoney(number, options)</h3>
+          <div class="api-description">
+            <p>Formats a number as Bengali currency without text conversion.</p>
+            <div class="code-block">
+              // Basic usage toBanglaMoney(1000000) // "৳১০,০০,০০০" // With
+              options toBanglaMoney(5000, { showCurrency: false }) // "৫,০০০"
+              toBanglaMoney(1000, { currency: "BDT" }) // "BDT১,০০০"
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Use Cases Section -->
-      <section class="demo-section">
-        <h2>🎯 Perfect For</h2>
-        <div class="features">
-          <div class="feature">
-            <h3>🏦 Banking Applications</h3>
+      <!-- Use Cases -->
+      <section class="section">
+        <h2>Use Cases</h2>
+        <div class="use-cases-grid">
+          <div class="use-case">
+            <h3>Banking Applications</h3>
             <p>Account statements, transaction records</p>
           </div>
-          <div class="feature">
-            <h3>🛒 E-commerce Platforms</h3>
+          <div class="use-case">
+            <h3>E-commerce Platforms</h3>
             <p>Product pricing, checkout systems</p>
           </div>
-          <div class="feature">
-            <h3>📄 Invoice Generators</h3>
+          <div class="use-case">
+            <h3>Invoice Generators</h3>
             <p>Professional invoices, receipts</p>
           </div>
-          <div class="feature">
-            <h3>📊 Accounting Software</h3>
+          <div class="use-case">
+            <h3>Accounting Software</h3>
             <p>Financial reports, calculations</p>
           </div>
-          <div class="feature">
-            <h3>🏛️ Government Systems</h3>
+          <div class="use-case">
+            <h3>Government Systems</h3>
             <p>Official documents, forms</p>
           </div>
-          <div class="feature">
-            <h3>📱 Mobile Applications</h3>
+          <div class="use-case">
+            <h3>Mobile Applications</h3>
             <p>Bengali financial apps</p>
           </div>
         </div>
       </section>
 
-      <!-- API Documentation Section -->
-      <section class="demo-section">
-        <h2>📖 API Documentation</h2>
-
-        <h3>toText(number, options)</h3>
-        <p>Converts numbers to Bengali text representation only.</p>
-        <div class="code-block">
-          // Basic usage toText(1000000) // "দশ লাখ টাকা" // With options
-          toText(75, { textInEnglish: true }) // "seventy five taka"
-          toText(1500000, { useShortForm: true }) // "1.5M টাকা"
-        </div>
-
-        <h3>toBanglaMoney(number, options)</h3>
-        <p>Formats numbers as Bengali currency with proper comma placement.</p>
-        <div class="code-block">
-          // Basic usage toBanglaMoney(1000000) // "৳১০,০০,০০০" // With options
-          toBanglaMoney(5000, { showCurrency: false }) // "৫,০০০"
-          toBanglaMoney(1000, { currency: "BDT" }) // "BDT১,০০০"
-        </div>
-      </section>
-
-      <!-- Performance & Compatibility -->
-      <section class="demo-section">
-        <h2>⚡ Performance & Compatibility</h2>
-        <div class="features">
-          <div class="feature">
-            <h3>🚀 Lightning Fast</h3>
-            <p>Optimized algorithms for speed</p>
+      <!-- Compatibility -->
+      <section class="section">
+        <h2>Compatibility</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>Node.js</h3>
+            <p>12.0.0+ Full support</p>
           </div>
-          <div class="feature">
-            <h3>📱 Cross Platform</h3>
-            <p>Node.js 12+, all modern browsers</p>
+          <div class="feature-card">
+            <h3>Browser</h3>
+            <p>All modern browsers</p>
           </div>
-          <div class="feature">
-            <h3>📦 Zero Dependencies</h3>
-            <p>Lightweight, no external dependencies</p>
+          <div class="feature-card">
+            <h3>React</h3>
+            <p>Full framework support</p>
           </div>
-          <div class="feature">
-            <h3>🔄 ES6 & CommonJS</h3>
-            <p>Both import and require supported</p>
+          <div class="feature-card">
+            <h3>Vue.js</h3>
+            <p>Full framework support</p>
           </div>
-          <div class="feature">
-            <h3>📊 BigInt Support</h3>
-            <p>Handle numbers up to 10^20</p>
+          <div class="feature-card">
+            <h3>Angular</h3>
+            <p>Full framework support</p>
           </div>
-          <div class="feature">
-            <h3>🎯 TypeScript Ready</h3>
-            <p>Full TypeScript support</p>
+          <div class="feature-card">
+            <h3>TypeScript</h3>
+            <p>Type definitions included</p>
           </div>
         </div>
       </section>
+    </div>
 
-      <!-- Footer -->
-      <footer class="footer">
+    <footer class="footer">
+      <div class="container">
         <p>Made with ❤️ for the Bengali developer community</p>
         <p>
           © 2025 bangla-money-format | MIT License |
           <a href="https://github.com/nizamseu">@nizamseu</a>
         </p>
-      </footer>
-    </div>
-
-    <!-- Interactive Demo Script -->
-    <script src="https://unpkg.com/bangla-money-format@latest/src/index.js"></script>
-    <script>
-      // Add interactive demo functionality here
-      console.log("Bangla Money Format documentation loaded");
-    </script>
+      </div>
+    </footer>
   </body>
 </html>

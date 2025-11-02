@@ -8,303 +8,550 @@
       name="description"
       content="Try bangla-money-format NPM package live! Interactive demo for Bengali currency formatting, number conversion, and more features."
     />
+
     <style>
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      * {
         margin: 0;
-        padding: 20px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        color: #2c3e50;
+        background-color: #f8f9fa;
       }
 
       .container {
-        max-width: 1000px;
+        max-width: 1200px;
         margin: 0 auto;
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 15px;
-        padding: 30px;
-        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        padding: 0 20px;
       }
 
-      .demo-section {
-        margin: 30px 0;
-        padding: 20px;
-        border: 2px solid #e2e8f0;
-        border-radius: 10px;
-        background: #f7fafc;
+      /* Header */
+      .header {
+        background: white;
+        border-bottom: 1px solid #e9ecef;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
       }
 
-      .input-group {
-        margin: 15px 0;
+      .header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+        text-align: center;
       }
 
-      label {
-        display: block;
-        margin-bottom: 5px;
+      .header p {
+        color: #6c757d;
+        text-align: center;
+        font-size: 1.125rem;
+      }
+
+      .back-link {
+        display: inline-block;
+        color: #007bff;
+        text-decoration: none;
+        margin-bottom: 1rem;
         font-weight: 500;
-        color: #2d3748;
       }
 
-      input[type="number"],
-      select {
-        width: 100%;
-        padding: 10px;
-        border: 2px solid #e2e8f0;
-        border-radius: 5px;
-        font-size: 16px;
+      .back-link:hover {
+        text-decoration: underline;
       }
 
-      input[type="checkbox"] {
-        margin-right: 8px;
-      }
-
-      .result {
-        background: #e6fffa;
-        border: 2px solid #38b2ac;
-        border-radius: 8px;
-        padding: 15px;
-        margin: 15px 0;
-        font-size: 18px;
-        font-weight: 500;
-        color: #234e52;
-        min-height: 50px;
-        display: flex;
-        align-items: center;
-      }
-
-      .options {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
-        margin: 20px 0;
-      }
-
-      .option {
-        display: flex;
-        align-items: center;
-      }
-
-      button {
-        background: #667eea;
-        color: white;
-        border: none;
-        padding: 12px 24px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        margin: 10px 5px;
-      }
-
-      button:hover {
-        background: #5a67d8;
-      }
-
+      /* Navigation Tabs */
       .tabs {
+        background: white;
+        border-radius: 0.5rem;
+        border: 1px solid #e9ecef;
+        margin-bottom: 2rem;
+        overflow: hidden;
+      }
+
+      .tab-nav {
         display: flex;
-        border-bottom: 2px solid #e2e8f0;
-        margin-bottom: 20px;
+        border-bottom: 1px solid #e9ecef;
       }
 
       .tab {
-        padding: 12px 24px;
+        flex: 1;
+        padding: 1rem;
+        background: #f8f9fa;
+        border: none;
         cursor: pointer;
-        border-bottom: 2px solid transparent;
+        font-size: 0.875rem;
         font-weight: 500;
+        color: #6c757d;
+        transition: all 0.2s ease;
+        border-right: 1px solid #e9ecef;
+      }
+
+      .tab:last-child {
+        border-right: none;
       }
 
       .tab.active {
-        border-bottom-color: #667eea;
-        color: #667eea;
+        background: white;
+        color: #2c3e50;
+        border-bottom: 2px solid #007bff;
       }
 
+      .tab:hover:not(.active) {
+        background: #e9ecef;
+      }
+
+      /* Tab Content */
       .tab-content {
         display: none;
+        padding: 2rem;
       }
 
       .tab-content.active {
         display: block;
       }
 
+      /* Demo Section */
+      .demo-section {
+        background: white;
+        border-radius: 0.5rem;
+        border: 1px solid #e9ecef;
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .demo-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #2c3e50;
+      }
+
+      .demo-section h3 {
+        font-size: 1.125rem;
+        margin-bottom: 1rem;
+        color: #495057;
+      }
+
+      /* Input Groups */
+      .input-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .input-group label {
+        display: block;
+        font-weight: 500;
+        color: #495057;
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+      }
+
+      .input-group input[type="number"],
+      .input-group select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ced4da;
+        border-radius: 0.375rem;
+        font-size: 1rem;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .input-group input[type="number"]:focus,
+      .input-group select:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+
+      /* Options Grid */
+      .options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+
+      .option {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem;
+        background: #f8f9fa;
+        border-radius: 0.375rem;
+        border: 1px solid #e9ecef;
+      }
+
+      .option input[type="checkbox"] {
+        margin-right: 0.5rem;
+        transform: scale(1.1);
+      }
+
+      .option label {
+        font-size: 0.875rem;
+        color: #495057;
+        cursor: pointer;
+        margin: 0;
+      }
+
+      /* Results */
+      .result {
+        background: #e7f3ff;
+        border: 1px solid #b3d9ff;
+        border-radius: 0.375rem;
+        padding: 1rem;
+        margin: 1rem 0;
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: #0056b3;
+        min-height: 3rem;
+        display: flex;
+        align-items: center;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+      }
+
       .code-output {
         background: #2d3748;
         color: #e2e8f0;
-        padding: 15px;
-        border-radius: 5px;
-        font-family: monospace;
-        margin: 10px 0;
+        padding: 1rem;
+        border-radius: 0.375rem;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        font-size: 0.875rem;
+        margin: 1rem 0;
+        overflow-x: auto;
         white-space: pre-wrap;
+      }
+
+      /* Comparison Section */
+      .comparison-grid {
+        display: grid;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .comparison-item {
+        border: 1px solid #e9ecef;
+        border-radius: 0.375rem;
+        overflow: hidden;
+      }
+
+      .comparison-item h3 {
+        background: #f8f9fa;
+        padding: 0.75rem 1rem;
+        margin: 0;
+        border-bottom: 1px solid #e9ecef;
+        font-size: 1rem;
+        color: #495057;
+      }
+
+      .comparison-result {
+        padding: 1rem;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        font-size: 1rem;
+        background: #e7f3ff;
+        color: #0056b3;
+      }
+
+      /* Installation Section */
+      .install-section {
+        background: white;
+        border-radius: 0.5rem;
+        border: 1px solid #e9ecef;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .install-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #2c3e50;
+      }
+
+      .install-commands {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .install-cmd {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        padding: 0.75rem 1rem;
+        border-radius: 0.375rem;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        font-size: 0.875rem;
+        color: #495057;
+      }
+
+      /* Footer */
+      .footer {
+        background: white;
+        border-top: 1px solid #e9ecef;
+        padding: 2rem 0;
+        text-align: center;
+        color: #6c757d;
+        margin-top: 2rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .tab-nav {
+          flex-direction: column;
+        }
+
+        .tab {
+          border-right: none;
+          border-bottom: 1px solid #e9ecef;
+        }
+
+        .tab:last-child {
+          border-bottom: none;
+        }
+
+        .options {
+          grid-template-columns: 1fr;
+        }
+
+        .install-commands {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .demo-section {
+          padding: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 10px;
+        }
+
+        .header h1 {
+          font-size: 1.5rem;
+        }
+
+        .header p {
+          font-size: 1rem;
+        }
       }
     </style>
   </head>
   <body>
+    <header class="header">
+      <div class="container">
+        <h1>Interactive Demo</h1>
+        <p>Try all features of the bangla-money-format NPM package live</p>
+      </div>
+    </header>
+
     <div class="container">
-      <h1>🔧 Interactive Demo - Bangla Money Format</h1>
-      <p>Try all features of the bangla-money-format NPM package live!</p>
+      <a href="index.html" class="back-link">← Back to Documentation</a>
 
+      <!-- Navigation Tabs -->
       <div class="tabs">
-        <div class="tab active" onclick="showTab('toText')">
-          toText() Function
+        <div class="tab-nav">
+          <button class="tab active" onclick="showTab(event, 'toText')">
+            toText() Function
+          </button>
+          <button class="tab" onclick="showTab(event, 'toBanglaMoney')">
+            toBanglaMoney() Function
+          </button>
+          <button class="tab" onclick="showTab(event, 'comparison')">
+            Side by Side Comparison
+          </button>
         </div>
-        <div class="tab" onclick="showTab('toBanglaMoney')">
-          toBanglaMoney() Function
+
+        <!-- toText Demo -->
+        <div id="toText" class="tab-content active">
+          <div class="demo-section">
+            <h2>toText() - Convert Numbers to Bengali Text</h2>
+
+            <div class="input-group">
+              <label for="textNumber">Enter Number:</label>
+              <input
+                type="number"
+                id="textNumber"
+                value="1000000"
+                oninput="updateTextDemo()"
+              />
+            </div>
+
+            <div class="options">
+              <div class="option">
+                <input
+                  type="checkbox"
+                  id="textInEnglish"
+                  onchange="updateTextDemo()"
+                />
+                <label for="textInEnglish">Text in English</label>
+              </div>
+              <div class="option">
+                <input
+                  type="checkbox"
+                  id="useShortForm"
+                  onchange="updateTextDemo()"
+                />
+                <label for="useShortForm">Use Short Form (K, M, B, T)</label>
+              </div>
+              <div class="option">
+                <input
+                  type="checkbox"
+                  id="useTraditionalScale"
+                  onchange="updateTextDemo()"
+                />
+                <label for="useTraditionalScale">Use Traditional Scale</label>
+              </div>
+              <div class="option">
+                <input
+                  type="checkbox"
+                  id="showEnglishEquivalent"
+                  onchange="updateTextDemo()"
+                />
+                <label for="showEnglishEquivalent"
+                  >Show English Equivalent</label
+                >
+              </div>
+            </div>
+
+            <h3>Result:</h3>
+            <div class="result" id="textResult">দশ লাখ টাকা</div>
+
+            <h3>Code:</h3>
+            <div class="code-output" id="textCode">
+              toText(1000000) // "দশ লাখ টাকা"
+            </div>
+          </div>
         </div>
-        <div class="tab" onclick="showTab('comparison')">Side by Side</div>
+
+        <!-- toBanglaMoney Demo -->
+        <div id="toBanglaMoney" class="tab-content">
+          <div class="demo-section">
+            <h2>toBanglaMoney() - Format Currency with Commas</h2>
+
+            <div class="input-group">
+              <label for="moneyNumber">Enter Number:</label>
+              <input
+                type="number"
+                id="moneyNumber"
+                value="1000000"
+                oninput="updateMoneyDemo()"
+              />
+            </div>
+
+            <div class="options">
+              <div class="option">
+                <input
+                  type="checkbox"
+                  id="showCurrency"
+                  checked
+                  onchange="updateMoneyDemo()"
+                />
+                <label for="showCurrency">Show Currency Symbol</label>
+              </div>
+              <div class="option">
+                <label for="currencySymbol">Currency Symbol:</label>
+                <select id="currencySymbol" onchange="updateMoneyDemo()">
+                  <option value="৳">৳ (Bengali Taka)</option>
+                  <option value="BDT">BDT</option>
+                  <option value="₹">₹ (Rupee)</option>
+                  <option value="$">$ (Dollar)</option>
+                </select>
+              </div>
+              <div class="option">
+                <label for="negativeFormat">Negative Format:</label>
+                <select id="negativeFormat" onchange="updateMoneyDemo()">
+                  <option value="minus">minus</option>
+                  <option value="parenthesis">parenthesis</option>
+                </select>
+              </div>
+            </div>
+
+            <h3>Result:</h3>
+            <div class="result" id="moneyResult">৳১০,০০,০০০</div>
+
+            <h3>Code:</h3>
+            <div class="code-output" id="moneyCode">
+              toBanglaMoney(1000000) // "৳১০,০০,০০০"
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparison Demo -->
+        <div id="comparison" class="tab-content">
+          <div class="demo-section">
+            <h2>Side by Side Comparison</h2>
+
+            <div class="input-group">
+              <label for="compNumber">Enter Number:</label>
+              <input
+                type="number"
+                id="compNumber"
+                value="75000"
+                oninput="updateComparison()"
+              />
+            </div>
+
+            <div class="comparison-grid">
+              <div class="comparison-item">
+                <h3>toText() Output:</h3>
+                <div class="comparison-result" id="compTextResult">
+                  পঁচাত্তর হাজার টাকা
+                </div>
+              </div>
+
+              <div class="comparison-item">
+                <h3>toBanglaMoney() Output:</h3>
+                <div class="comparison-result" id="compMoneyResult">
+                  ৳৭৫,০০০
+                </div>
+              </div>
+
+              <div class="comparison-item">
+                <h3>Combined Usage:</h3>
+                <div class="comparison-result" id="compCombined">
+                  ৳৭৫,০০০ (পঁচাত্তর হাজার টাকা)
+                </div>
+              </div>
+            </div>
+
+            <h3>Code Example:</h3>
+            <div class="code-output" id="compCode">
+              const amount = 75000; const text = toText(amount); const money =
+              toBanglaMoney(amount); const combined = `${money} (${text})`;
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- toText Demo -->
-      <div id="toText" class="tab-content active">
-        <div class="demo-section">
-          <h2>toText() - Convert Numbers to Bengali Text</h2>
-
-          <div class="input-group">
-            <label for="textNumber">Enter Number:</label>
-            <input
-              type="number"
-              id="textNumber"
-              value="1000000"
-              oninput="updateTextDemo()"
-            />
-          </div>
-
-          <div class="options">
-            <div class="option">
-              <input
-                type="checkbox"
-                id="textInEnglish"
-                onchange="updateTextDemo()"
-              />
-              <label for="textInEnglish">Text in English</label>
-            </div>
-            <div class="option">
-              <input
-                type="checkbox"
-                id="useShortForm"
-                onchange="updateTextDemo()"
-              />
-              <label for="useShortForm">Use Short Form (K, M, B, T)</label>
-            </div>
-            <div class="option">
-              <input
-                type="checkbox"
-                id="useTraditionalScale"
-                onchange="updateTextDemo()"
-              />
-              <label for="useTraditionalScale">Use Traditional Scale</label>
-            </div>
-            <div class="option">
-              <input
-                type="checkbox"
-                id="showEnglishEquivalent"
-                onchange="updateTextDemo()"
-              />
-              <label for="showEnglishEquivalent">Show English Equivalent</label>
-            </div>
-          </div>
-
-          <div class="result" id="textResult">দশ লাখ টাকা</div>
-
-          <div class="code-output" id="textCode">
-            toText(1000000) // "দশ লাখ টাকা"
-          </div>
-        </div>
-      </div>
-
-      <!-- toBanglaMoney Demo -->
-      <div id="toBanglaMoney" class="tab-content">
-        <div class="demo-section">
-          <h2>toBanglaMoney() - Format Currency with Commas</h2>
-
-          <div class="input-group">
-            <label for="moneyNumber">Enter Number:</label>
-            <input
-              type="number"
-              id="moneyNumber"
-              value="1000000"
-              oninput="updateMoneyDemo()"
-            />
-          </div>
-
-          <div class="options">
-            <div class="option">
-              <input
-                type="checkbox"
-                id="showCurrency"
-                checked
-                onchange="updateMoneyDemo()"
-              />
-              <label for="showCurrency">Show Currency Symbol</label>
-            </div>
-            <div class="option">
-              <label for="currencySymbol">Currency Symbol:</label>
-              <select id="currencySymbol" onchange="updateMoneyDemo()">
-                <option value="৳">৳ (Bengali Taka)</option>
-                <option value="BDT">BDT</option>
-                <option value="₹">₹ (Rupee)</option>
-                <option value="$">$ (Dollar)</option>
-              </select>
-            </div>
-            <div class="option">
-              <label for="negativeFormat">Negative Format:</label>
-              <select id="negativeFormat" onchange="updateMoneyDemo()">
-                <option value="minus">minus</option>
-                <option value="parenthesis">parenthesis</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="result" id="moneyResult">৳১০,০০,০০০</div>
-
-          <div class="code-output" id="moneyCode">
-            toBanglaMoney(1000000) // "৳১০,০০,০০০"
-          </div>
-        </div>
-      </div>
-
-      <!-- Comparison Demo -->
-      <div id="comparison" class="tab-content">
-        <div class="demo-section">
-          <h2>Side by Side Comparison</h2>
-
-          <div class="input-group">
-            <label for="compNumber">Enter Number:</label>
-            <input
-              type="number"
-              id="compNumber"
-              value="75000"
-              oninput="updateComparison()"
-            />
-          </div>
-
-          <h3>toText() Output:</h3>
-          <div class="result" id="compTextResult">পঁচাত্তর হাজার টাকা</div>
-
-          <h3>toBanglaMoney() Output:</h3>
-          <div class="result" id="compMoneyResult">৳৭৫,০০০</div>
-
-          <h3>Combined Usage:</h3>
-          <div class="result" id="compCombined">
-            ৳৭৫,০০০ (পঁচাত্তর হাজার টাকা)
-          </div>
-
-          <div class="code-output" id="compCode">
-            const amount = 75000; const text = toText(amount); const money =
-            toBanglaMoney(amount); const combined = `${money} (${text})`;
-          </div>
-        </div>
-      </div>
-
-      <div class="demo-section">
-        <h2>🚀 Try in Your Project</h2>
-        <div class="code-output">
-          # Install the package npm install bangla-money-format # Import and use
-          const { toText, toBanglaMoney } = require('bangla-money-format'); //
-          Or with ES6 import { toText, toBanglaMoney } from
-          'bangla-money-format';
+      <!-- Installation Section -->
+      <div class="install-section">
+        <h2>Try in Your Project</h2>
+        <div class="install-commands">
+          <div class="install-cmd">npm install bangla-money-format</div>
+          <div class="install-cmd">yarn add bangla-money-format</div>
+          <div class="install-cmd">pnpm add bangla-money-format</div>
         </div>
 
-        <p><a href="index.html">← Back to Main Documentation</a></p>
+        <div class="code-output" style="text-align: left; margin-top: 1.5rem">
+          // Import and use const { toText, toBanglaMoney } =
+          require('bangla-money-format'); // Or with ES6 import { toText,
+          toBanglaMoney } from 'bangla-money-format';
+        </div>
       </div>
     </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Made with ❤️ for the Bengali developer community</p>
+        <p>
+          © 2025 bangla-money-format |
+          <a href="https://github.com/nizamseu">@nizamseu</a>
+        </p>
+      </div>
+    </footer>
 
     <script>
       // Simulate the package functions for demo
@@ -380,17 +627,21 @@
         return showCurrency ? currency + formatted : formatted;
       }
 
-      function showTab(tabName) {
-        // Hide all tabs
+      function showTab(event, tabName) {
+        // Hide all tab contents
         document.querySelectorAll(".tab-content").forEach((tab) => {
           tab.classList.remove("active");
         });
+
+        // Remove active class from all tabs
         document.querySelectorAll(".tab").forEach((tab) => {
           tab.classList.remove("active");
         });
 
-        // Show selected tab
+        // Show selected tab content
         document.getElementById(tabName).classList.add("active");
+
+        // Add active class to clicked tab
         event.target.classList.add("active");
       }
 
